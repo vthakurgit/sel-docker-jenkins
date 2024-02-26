@@ -18,7 +18,7 @@ pipeline{
 
         stage('Build Image'){
             steps{
-                sh 'docker build -t=vthakur239/selenium .'
+                sh 'docker build -t=vthakur239/selenium:latest .'
             }
         }
 
@@ -30,8 +30,9 @@ pipeline{
             steps{
                 // There might be a warning.
                 sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
-                sh 'docker push vthakur239/selenium'
-            }
+                sh "docker tag vthakur239/selenium:latest vthakur239/selenium:${env.BUILD_NUMBER}"
+                sh "docker push vthakur239/selenium:${env.BUILD_NUMBER}"
+                  }
         }
 
     }
