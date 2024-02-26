@@ -25,7 +25,7 @@ pipeline{
         stage('Push Image'){
             environment{
                 // assuming you have stored the credentials with this name
-                DOCKER_HUB = credentials('dockerhub-creds')
+                DOCKER_HUB = credentials('dockerCredsvthakur239')
             }
             steps{
                 // There might be a warning.
